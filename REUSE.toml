@@ -1,0 +1,31 @@
+version = 1
+SPDX-PackageName = "antgrid-site"
+SPDX-PackageSupplier = "Radha AI Products"
+SPDX-PackageDownloadLocation = "https://github.com/antgrid-ai/antgrid-site"
+
+[[annotations]]
+path = ["**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Radha AI Products"
+SPDX-License-Identifier = "MPL-2.0"
+
+# Prose. A file holding both prose and the code that renders it would need two
+# licences on one file, so changelog notes and roadmap entries are kept apart
+# from changelog.ts and roadmap.ts.
+[[annotations]]
+path = ["src/content/blog/**", "src/pages/*.md", "src/data/changelog-notes.ts", "src/data/roadmap-entries.ts"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Radha AI Products"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["public/favicon.ico", "public/logo/*.ico", "public/logo/*.png", "public/logo/*.svg"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Radha AI Products"
+SPDX-License-Identifier = "LicenseRef-Antgrid-Brand"
+
+[[annotations]]
+path = ["src/icons/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "Respective trademark and artwork owners"
+SPDX-License-Identifier = "LicenseRef-Third-Party-Trademark"

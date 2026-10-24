@@ -1,0 +1,107 @@
+name: Deploy site (Azure SWA)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+  # The palette check compares against antgrid's app, which changes without
+  # touching this repo. A weekly run surfaces that drift without waiting for an
+  # unrelated site PR to trip over it.
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# A merge fires `closed` while that PR's last `synchronize` build is often still
+# running. If its Deploy lands after the close job, it re-creates the staging
+# environment the close just deleted and nothing ever reaps it again. The Free
+# SKU allows 3, so three such leaks wedge every later PR on "maximum number of
+# staging environments". Cancelling the older run of the same PR closes the
+# window; push-to-main groups separately so a production deploy is never
+# cancelled by PR traffic.
+concurrency:
+  group: swa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build_and_deploy:
+    # `closed` is handled by close_preview; everything else builds. The fork
+    # guard lives on the Deploy step rather than here so a contributor PR still
+    # gets built and checked rather than skipped.
+    if: |
+      github.event_name != 'pull_request' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    name: Build and deploy
+    steps:
+      - uses: actions/checkout@v7
+      # Only the palette files tests/unit/ab-ramp.test.ts reads. Non-cone mode,
+      # because cone mode would also bring antgrid's root files into this tree.
+      - name: Check out antgrid's app palette
+        uses: actions/checkout@v7
+        with:
+          repository: antgrid-ai/antgrid
+          ref: development
+          path: .antgrid
+          sparse-checkout: /app/lib/design/
+          sparse-checkout-cone-mode: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Cache Bun install cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+      - name: Install and build
+        env:
+          PUBLIC_SALESIQ_WIDGET_URL: ${{ secrets.SALESIQ_WIDGET_URL }}
+          PUBLIC_SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          bun install --frozen-lockfile
+          bun run check
+          bun run build
+      - name: Test
+        env:
+          ANTGRID_REPO: ${{ github.workspace }}/.antgrid
+        run: |
+          bun run test:unit
+          bun run test:scripts
+      # Fork PRs are correctly denied AZURE_STATIC_WEB_APPS_API_TOKEN, so this
+      # step would fail with a red X on every contributor PR. Same guard on
+      # close_preview below. Scheduled runs only check.
+      - name: Deploy
+        if: |
+          vars.RELEASE_REPO == 'true' &&
+          github.event_name != 'schedule' &&
+          (github.event_name != 'pull_request' ||
+           github.event.pull_request.head.repo.full_name == github.repository)
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: "dist"
+          skip_app_build: true
+          skip_api_build: true
+
+  close_preview:
+    if: |
+      vars.RELEASE_REPO == 'true' &&
+      github.event_name == 'pull_request' &&
+      github.event.action == 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: Close PR preview
+    steps:
+      - name: Close
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: close
