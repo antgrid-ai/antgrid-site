@@ -18,6 +18,21 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20750.1036": {
+    title: "Carry on in another agent",
+    lines: [
+      ["new", "You can now fork a session into a different agent and carry on with the same context, say when one runs out of quota mid-task. The fork works in the same workspace by default, so your uncommitted edits come along. The new agent reads the old one's transcript from a file in your project that's kept out of git."],
+      ["fixed", "A prompt queued while an agent starts up, such as a fork handoff or a message from another session, no longer gets typed into the agent's folder-trust dialog, where it picked whichever option was highlighted. It now waits until you've answered the dialog yourself."],
+      ["fixed", "Refreshing a stuck connection, or cancelling one project, no longer leaves other projects open on the same machine disconnected for good. We've also fixed a crash when a machine reconnected while its old connection was still closing."],
+      ["fixed", "A single failed read of the scheduler's storage no longer switches scheduled prompts off until you restart the desktop app. Schedules pick up again as soon as the storage can be read."],
+      ["fixed", "We read current Codex transcripts again, including ones Codex has compressed after sitting idle, rolled back or compacted. Forks, session names and Handler had been seeing an empty conversation. Undoing a turn in a Codex chat works again too."],
+      ["fixed", "We've caught up with recent Claude Code releases. Sessions aren't named after a slash command or a compaction summary, Handler no longer mistakes Claude Code's request logs for the conversation, and an account hold or credential error comes straight to you instead of Handler telling the agent to continue."],
+      ["fixed", "Copilot sessions are named from your first prompt instead of staying “Session N”, and OpenCode slash commands that take no arguments run instead of failing."],
+      ["new", "The sample project now has a working Scheduler, with example schedules and simulated runs, so you can try it before connecting a machine. Anything you make there is gone when you leave the sample."],
+      ["fixed", "Without a machine connected, Scheduler explains what it needs instead of showing an error every five seconds. Errors in Files, Git, Preview and settings now give a readable message instead of a raw exception."],
+    ],
+  },
+
   "v1.20746.1035": {
     lines: [
       ["fixed", "We've fixed Windows launches that mangled quoted arguments, failed on paths with spaces or cut an opening prompt short. Prompts that won't fit the Windows command line are sent through the terminal after launch."],
