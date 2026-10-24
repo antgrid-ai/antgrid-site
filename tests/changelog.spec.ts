@@ -1,13 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ENTRIES, ORPHAN_NOTES, releaseStrip, STRIP_DAYS } from "../src/data/changelog";
-
-// Notes are keyed by tag and the page joins them to the release spine silently.
-// A key matching no release renders nowhere and reports nothing, so a typo'd tag
-// or a release deleted upstream costs someone their writing with nothing red
-// anywhere. changelog-notes.ts says this is pinned; this is where.
-test("every hand-written note reaches a release", () => {
-  expect(ORPHAN_NOTES, "note keys matching no published release").toEqual([]);
-});
+import { ENTRIES, releaseStrip, STRIP_DAYS } from "../src/data/changelog";
 
 // Not that the loop runs — that the join holds. A release the spine carries must
 // have a row under its own anchor, because support replies and update prompts

@@ -1,19 +1,22 @@
 // The changelog's hand-written notes. Prose, licensed CC BY 4.0 (see REUSE.toml);
 // the code that renders it is MPL-2.0 and lives in ./changelog.ts.
 //
-// Register is Human (brand: support replies, outreach, changelog, blog). "We",
-// contractions, British spelling, no em dashes. A release note is one person
+// Register is Human (brand: support replies, outreach, changelog, blog): "you"
+// for the reader, "we" only to own something, contractions, British spelling,
+// no em dashes. A release note is one person
 // telling another what changed and, where it helps, what was wrong before. It
 // is not a PR title with the prefix filed off: the generated notes on GitHub
 // already carry those, this page exists because they are unreadable to anyone
 // who did not write them.
+//
+// The full writing rules, with an example, are in CONTENT.md.
 import type { Note } from "./changelog";
 
 /**
  * Hand-written notes, keyed by tag. Add a key, write the lines, done.
  *
  * A key that matches no release is surfaced by `ORPHAN_NOTES` in ./changelog.ts
- * and pinned by changelog.spec.ts rather than being silently dropped at build
+ * and pinned by tests/unit/changelog.test.ts rather than being silently dropped at build
  * time — a typo'd tag would otherwise cost someone their writing with no error
  * anywhere.
  */

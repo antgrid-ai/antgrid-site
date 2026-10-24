@@ -38,8 +38,9 @@ export type Release = {
  * this page is looking for the thing that bit them, and a longer vocabulary
  * spreads that over three words which all mean `fixed`.
  *
- * `security` is the one that has to stay scarce. It names the account and
- * access boundary — who may reach this machine, what a signed-out session can
+ * `security` is the one that has to stay scarce. It names a change to who may
+ * reach this machine, what runs on it without the user's say, or what leaves
+ * it — a prompt that ran as a shell command, what a signed-out session can
  * still see, an address built to be misread. Not anything that merely touches
  * the crypto path: spend it on a cipher's throughput and it stops meaning
  * anything, and the reader who most needs it learns to skip it.

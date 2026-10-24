@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { RELEASES } from "../../src/data/changelog-releases";
 import { groupRoadmap, LAST_REVIEWED, ROADMAP, type RoadmapEntry } from "../../src/data/roadmap";
 
 const details = { id: "feature", title: "Feature", description: "Benefit", area: "App", update: "Update", updatedAt: "2026-10-01" };
@@ -36,13 +37,21 @@ describe("roadmap", () => {
     expect(released.releaseUrl).toMatch(/^https:\/\//);
   });
 
-  test("committed entries have unique stable anchors, valid dates and valid optional release links", () => {
+  // Every done entry, not just the five the page shows: CONTENT.md promises
+  // these checks, and CI runs this suite but not Playwright.
+  test("completed entries say so and link a release the changelog carries", () => {
+    const done = ROADMAP.filter((entry) => entry.status === "done");
+    const anchors = RELEASES.map((release) => `https://antgrid.ai/changelog#${release.version}`);
+    expect(done.filter((entry) => !entry.update.startsWith("Completed:")).map((entry) => entry.id)).toEqual([]);
+    expect(done.filter((entry) => entry.releaseUrl && !anchors.includes(entry.releaseUrl)).map((entry) => entry.id)).toEqual([]);
+  });
+
+  test("committed entries have unique stable anchors and valid dates", () => {
     expect(new Set(ROADMAP.map((entry) => entry.id)).size).toBe(ROADMAP.length);
     for (const entry of ROADMAP) {
       expect(entry.id).toMatch(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/);
       expect(new Date(entry.updatedAt).toISOString().slice(0, 10)).toBe(entry.updatedAt);
       expect(entry.updatedAt <= LAST_REVIEWED).toBe(true);
-      if (entry.releaseUrl) expect(new URL(entry.releaseUrl).protocol).toBe("https:");
     }
     expect(ROADMAP.find((entry) => entry.id === "cross-agent-cross-machine-memory")?.status).toBe("next");
     expect(ROADMAP.find((entry) => entry.id === "public-roadmap")?.status).toBe("done");

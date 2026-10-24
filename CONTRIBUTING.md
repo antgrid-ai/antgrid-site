@@ -14,14 +14,17 @@ bun install --frozen-lockfile
 bun run check
 bun run build
 bun run test:unit
+bun run test:scripts
 bun run test        # Playwright; not run in CI, so please run it yourself
 ```
 
 Say which of these you ran. `tests/unit/ab-ramp.test.ts` compares the site's
-palette with the app's and skips unless it finds an antgrid checkout: set
-`ANTGRID_REPO`, or clone antgrid beside this repo as `../antgrid`.
+palette with the app's and needs an antgrid checkout: set `ANTGRID_REPO`, or
+clone antgrid beside this repo as `../antgrid`. Without one it skips locally and
+fails in CI.
 
-Blog posts follow [BLOG.md](BLOG.md).
+Blog posts follow [BLOG.md](BLOG.md). Changelog notes and roadmap entries follow
+[CONTENT.md](CONTENT.md).
 
 ## Contracts no test here catches
 
@@ -30,12 +33,14 @@ Blog posts follow [BLOG.md](BLOG.md).
 - **The privacy policy** (`src/pages/privacy.md`) must agree with the iOS
   privacy manifest, `app/ios/Runner/PrivacyInfo.xcprivacy` in antgrid.
 - **The logo files** in `public/logo/` are generated in antgrid; see
-  `public/logo/README.md`. Do not edit them by hand.
+  `public/logo/README.md`. Don't edit them by hand.
 
 ## Contribution terms
 
-You contribute under **the licence applying to the files you touched**, as
-[LICENSING.md](LICENSING.md) maps them (MPL-2.0 for code, CC BY 4.0 for
-writing), and you confirm you may license it under those terms. That is
+You contribute under **the licence [LICENSING.md](LICENSING.md) assigns to each
+path you touch**, and you confirm you may license it under those terms. It goes
+by path, not by what the content looks like: copy inside an `.astro` file is
+MPL-2.0, and `src/data/changelog-notes.ts` is CC BY 4.0. The brand assets and
+`src/icons/` aren't open-licensed, so don't add to or change them. That is
 ordinary inbound-equals-outbound, per
 [GitHub ToS §D.6](https://docs.github.com/site-policy/github-terms/github-terms-of-service#6-contributions-under-repository-license).

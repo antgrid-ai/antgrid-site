@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { DONE_LIMIT, ROADMAP } from "../src/data/roadmap";
+import { DONE_LIMIT, groupRoadmap, ROADMAP } from "../src/data/roadmap";
 
 const done = ROADMAP.filter((entry) => entry.status === "done");
 
@@ -7,7 +7,8 @@ test("roadmap renders planned work, stable anchors and completed features", asyn
   await page.goto("/roadmap");
   await expect(page).toHaveTitle("Roadmap — antgrid");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/roadmap$/);
-  await expect(page.locator("main h2")).toHaveText(["Now", "Next", "Done"]);
+  // From the data: an Exploring entry adds a heading and an empty group drops one.
+  await expect(page.locator("main h2")).toHaveText(groupRoadmap(ROADMAP).map((group) => group.title));
   // Asserts the Done rule, never a named entry: every new completion pushes the
   // oldest one off the page, so any entry pinned here eventually fails the build.
   const completed = page.getByRole("region", { name: "Done", exact: true });
@@ -24,7 +25,6 @@ test("roadmap renders planned work, stable anchors and completed features", asyn
   for (const entry of shown) {
     await expect(now.locator(`#${entry.id}`)).toHaveCount(0);
     const article = completed.locator(`#${entry.id}`);
-    await expect(article).toContainText("Completed:");
     if (entry.discussionUrl) await expect(article.getByRole("link", { name: `Discussion: ${entry.title}` })).toHaveAttribute("href", entry.discussionUrl);
   }
   await expect(page.locator("main")).not.toContainText("Awaiting release");

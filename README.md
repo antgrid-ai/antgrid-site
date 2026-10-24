@@ -19,7 +19,8 @@ security, changelog, roadmap and blog. The product lives in
 - **Changelog** — `bun run sync:changelog` rewrites `src/data/changelog-releases.ts`
   from antgrid's GitHub releases; hand-written notes go in
   `src/data/changelog-notes.ts`.
-- **Roadmap** — `src/data/roadmap-entries.ts`.
+- **Roadmap** — `src/data/roadmap-entries.ts`. Writing rules for both are in
+  [CONTENT.md](CONTENT.md).
 - **Blog** — `src/content/blog/`; see [BLOG.md](BLOG.md).
 
 ## Config

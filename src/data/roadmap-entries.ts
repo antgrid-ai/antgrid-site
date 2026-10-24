@@ -1,5 +1,6 @@
 // The public roadmap's entries. Prose, licensed CC BY 4.0 (see REUSE.toml); the
 // code that groups and renders them is MPL-2.0 and lives in ./roadmap.ts.
+// The writing rules are in CONTENT.md.
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
