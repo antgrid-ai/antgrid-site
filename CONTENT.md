@@ -82,8 +82,8 @@ Each entry is product copy: say what you'll be able to do, not how it's built.
   project behind it.
 - **`description`** is the benefit in one sentence. It doesn't change as the
   work progresses.
-- **`update`** starts with the stage (Exploring, Designing, Building, Testing,
-  Early access), then says where it stands and which platforms it doesn't cover
+- **`update`** starts with the stage (Planned, Exploring, Designing, Building,
+  Testing, Early access), then says where it stands and which platforms it doesn't cover
   yet. No branches, PRs or "platform integration", and no dates. A `done`
   update starts `Completed:` and says in one or two sentences what shipped,
   limits included.

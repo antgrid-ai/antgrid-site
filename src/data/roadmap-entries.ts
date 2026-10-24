@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-10-21";
+export const LAST_REVIEWED = "2026-10-24";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
@@ -13,9 +13,9 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "When one agent hits its usage limit, carry the same task on in a different agent without losing its context.",
     area: "Agent sessions",
     status: "done",
-    update: "Completed: forking a session can switch to any installed agent. The new session gets the original agent's full transcript and a short summary of the task beside it in its own workspace, kept out of git.",
-    updatedAt: "2026-10-21",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/277",
+    update: "Completed: you can fork a session into any installed agent. The new session gets the original's full transcript and a short task summary in its own workspace, kept out of git.",
+    updatedAt: "2026-10-24",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20750.1036",
   },
   {
     id: "agent-scheduling",
@@ -23,9 +23,9 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Ask the agent you are working with to set up a schedule instead of creating it by hand.",
     area: "Agent sessions",
     status: "done",
-    update: "Completed: Antgrid MCP tools that let an agent list, create, change, pause, delete and run schedules for its own project, never with more approval freedom than its own session has. Sessions launched by a schedule can only read schedules.",
-    updatedAt: "2026-10-08",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/225",
+    update: "Completed: the agent you're working with can list, create, change, pause, delete and run schedules for its project, never with more approval freedom than its own session. Sessions a schedule started can only read schedules.",
+    updatedAt: "2026-10-12",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
   },
   {
     id: "one-off-schedules",
@@ -33,9 +33,9 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Run a prompt once at a chosen time, such as tomorrow at 9.",
     area: "Agent sessions",
     status: "done",
-    update: "Completed: a Once option in the schedule editor and for agents, with catch-up when the desktop was closed at the chosen time and a clear record of how each one-off ended.",
-    updatedAt: "2026-10-08",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/225",
+    update: "Completed: choose Once in the schedule editor, or ask an agent. A one-off missed while your desktop was closed runs when it's back, and its history shows how it ended.",
+    updatedAt: "2026-10-12",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
   },
   {
     id: "scheduler-catch-up",
@@ -43,9 +43,9 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Run the latest missed occurrence when your desktop comes back, instead of silently skipping it.",
     area: "Agent sessions",
     status: "done",
-    update: "Completed: a per-schedule choice to run the latest missed occurrence or skip missed runs, one consolidated record for earlier misses, and schedules that keep running after a phone signs out.",
-    updatedAt: "2026-10-08",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/225",
+    update: "Completed: each schedule can run the latest missed occurrence or skip missed runs, with one record for any earlier misses. Schedules keep running after a phone signs out.",
+    updatedAt: "2026-10-12",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
   },
   {
     id: "scheduler",
@@ -53,9 +53,9 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Run recurring prompts on your desktop and manage schedules from connected devices.",
     area: "Agent sessions",
     status: "done",
-    update: "Completed: local and remote schedule management, retained editing drafts, actionable run history, and recurring prompts that reuse a workspace owned by each schedule.",
-    updatedAt: "2026-10-05",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/213",
+    update: "Completed: run recurring prompts on your desktop and manage them from any connected device. Unsaved edits survive, run history points to the next step, and each schedule keeps its own workspace.",
+    updatedAt: "2026-10-06",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20732.1032",
   },
   {
     id: "public-roadmap",
@@ -63,9 +63,8 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Follow what Antgrid is building and what is done.",
     area: "Website",
     status: "done",
-    update: "Completed: a public roadmap with a file-based maintenance workflow.",
+    update: "Completed: this page, live on antgrid.ai.",
     updatedAt: "2026-10-05",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/211",
   },
   {
     id: "tasks",
@@ -73,17 +72,7 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Manage tasks across projects and launch work from connected repositories.",
     area: "Projects & tasks",
     status: "now",
-    update: "Cross-project task navigation and launching work from connected repositories are in an open implementation PR.",
-    updatedAt: "2026-10-05",
-    discussionUrl: "https://github.com/antgrid-ai/antgrid/pull/171",
-  },
-  {
-    id: "native-app-preview",
-    title: "Native app preview",
-    description: "View native application windows inside Antgrid’s previewer.",
-    area: "Preview · Desktop",
-    status: "now",
-    update: "Window streaming and remote input are implemented on a feature branch; platform integration remains in progress.",
+    update: "Building. You'll be able to move between tasks across all your projects and start work from a connected repository.",
     updatedAt: "2026-10-05",
   },
   {
@@ -92,7 +81,7 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Dictate instructions to agents.",
     area: "Agent input",
     status: "now",
-    update: "On-device dictation for Windows and Linux is on a feature branch. Android recognition and warm-up work are still being verified.",
+    update: "Building. Dictation runs on your device on Windows and Linux, and Android is being tested. It doesn't cover macOS or iOS yet.",
     updatedAt: "2026-10-05",
   },
   {
@@ -101,7 +90,16 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     description: "Carry useful project context across agents and machines so future sessions can build on earlier work.",
     area: "Project context",
     status: "next",
-    update: "Planned as a shared-context capability across agents and machines.",
+    update: "Planned. Work hasn't started yet.",
     updatedAt: "2026-10-05",
+  },
+  {
+    id: "native-app-preview",
+    title: "Native app preview",
+    description: "View native application windows inside Antgrid’s previewer.",
+    area: "Preview · Desktop",
+    status: "next",
+    update: "Planned. Streaming a window works and remote control is built for Windows; work on the rest resumes later.",
+    updatedAt: "2026-10-24",
   },
 ];
