@@ -21,6 +21,22 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20752.1037": {
+    lines: [
+      ["changed", "The Git panel lists Staged Changes and Changes as separate groups in one scroll, conflicts first, each with its own Unstage All or Discard All. Discarding a file under Changes leaves its staged edits alone. A refused commit keeps your message, and a commit can't start during a pull, push or publish."],
+      ["fixed", "A commit with nothing staged now says “Nothing staged to commit” instead of “git commit failed”."],
+      ["fixed", "The Fork session dialog no longer hides its agent choice the first time you open it; the list fills in when the machine answers."],
+      ["changed", "Forks now default to This workspace for every agent, so your uncommitted changes come along. Before, a fork into the same agent defaulted to New workspace."],
+      ["new", "File viewers have a Download button. On Android it opens the system Save as screen, with Share beside it; on iPhone it opens the share sheet, where you can save to Files."],
+      ["new", "Markdown previews now open links to files on your machine, such as file: URLs, absolute paths and Windows drive paths, instead of refusing them. A file: link that names another computer is still refused, so a link can't send your machine to a network share."],
+      ["new", "Remote access lists each connected device's model, and its memory while it's online. Hover over the host chip in the title bar to see the host's memory."],
+      ["changed", "Select text, Paste and Copy host clipboard have moved from the terminal's quick actions bar into the session menu."],
+      ["fixed", "Clicking in a terminal without selecting anything no longer freezes its output."],
+      ["fixed", "A notification from another session now names that session, with the agent's own title moved into the body."],
+      ["fixed", "Windows: clicking an Antgrid notification now opens the copy that's already running instead of starting a second one."],
+    ],
+  },
+
   "v1.20750.1036": {
     title: "Carry on in another agent",
     lines: [
