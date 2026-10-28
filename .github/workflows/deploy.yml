@@ -6,11 +6,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches: [main]
-  # The palette check compares against antgrid's app, which changes without
-  # touching this repo. A weekly run surfaces that drift without waiting for an
-  # unrelated site PR to trip over it.
-  schedule:
-    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -40,16 +35,6 @@ jobs:
     name: Build and deploy
     steps:
       - uses: actions/checkout@v7
-      # Only the palette files tests/unit/ab-ramp.test.ts reads. Non-cone mode,
-      # because cone mode would also bring antgrid's root files into this tree.
-      - name: Check out antgrid's app palette
-        uses: actions/checkout@v7
-        with:
-          repository: antgrid-ai/antgrid
-          ref: development
-          path: .antgrid
-          sparse-checkout: /app/lib/design/
-          sparse-checkout-cone-mode: false
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
@@ -68,18 +53,15 @@ jobs:
           bun run check
           bun run build
       - name: Test
-        env:
-          ANTGRID_REPO: ${{ github.workspace }}/.antgrid
         run: |
           bun run test:unit
           bun run test:scripts
       # Fork PRs are correctly denied AZURE_STATIC_WEB_APPS_API_TOKEN, so this
       # step would fail with a red X on every contributor PR. Same guard on
-      # close_preview below. Scheduled runs only check.
+      # close_preview below.
       - name: Deploy
         if: |
           vars.RELEASE_REPO == 'true' &&
-          github.event_name != 'schedule' &&
           (github.event_name != 'pull_request' ||
            github.event.pull_request.head.repo.full_name == github.repository)
         uses: Azure/static-web-apps-deploy@v1

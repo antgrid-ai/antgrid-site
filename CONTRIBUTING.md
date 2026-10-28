@@ -18,10 +18,7 @@ bun run test:scripts
 bun run test        # Playwright; not run in CI, so please run it yourself
 ```
 
-Say which of these you ran. `tests/unit/ab-ramp.test.ts` compares the site's
-palette with the app's and needs an antgrid checkout: set `ANTGRID_REPO`, or
-clone antgrid beside this repo as `../antgrid`. Without one it skips locally and
-fails in CI.
+Say which of these you ran.
 
 Blog posts follow [BLOG.md](BLOG.md). Changelog notes and roadmap entries follow
 [CONTENT.md](CONTENT.md).
