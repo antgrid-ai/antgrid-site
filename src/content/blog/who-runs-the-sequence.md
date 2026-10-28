@@ -2,6 +2,7 @@
 title: "Your coding agent has a plan. Who runs the sequence?"
 description: "Hand over the follow-ups on a long-running coding task. Handler checks the agent's responses, asks for evidence and notifies you when it needs your input."
 publishedAt: 2026-09-18
+updatedAt: 2026-10-27
 topic: proof
 author: "Bharath Mohan"
 draft: false
@@ -19,7 +20,7 @@ We built Antgrid for working with coding agents across long-running tasks. Its H
 
 Start the task with your coding agent and do as much as you want together. Then tell Handler what's left, how to proceed and when to ask you. It checks the agent's responses against your instructions, asks for missing evidence and guides the remaining work. It notifies you when it needs your input or reaches a checkpoint you've set.
 
-[Antgrid's desktop beta](https://antgrid.ai/download) is available for Windows, macOS and Linux, with Handler included free during the beta. The companion phone app is [available by invite](mailto:contact@radhaai.com?subject=Antgrid%20mobile%20invite), through TestFlight and Play internal testing.
+[Antgrid's desktop beta](https://antgrid.ai/download) is available for Windows, macOS and Linux, with Handler included free during the beta. The companion phone app is [on Google Play](https://play.google.com/store/apps/details?id=ai.radhaai.antgrid) for Android, and [available by invite](mailto:contact@radhaai.com?subject=Antgrid%20mobile%20invite) through TestFlight for iOS.
 
 ## A real run: checking before closing
 
