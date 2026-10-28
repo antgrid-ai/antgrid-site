@@ -4,5 +4,3 @@ dist/
 test-results/
 playwright-report/
 .env
-# antgrid-ai/antgrid sparse checkout for tests/unit/ab-ramp.test.ts (CI only)
-.antgrid/

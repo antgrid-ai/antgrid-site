@@ -184,8 +184,8 @@
      Zinc-neutral and the site is warm-neutral, and that difference is the only
      thing doing the work — an app window painted in --color-panel is just a
      card. Keep every `ab-` token pointing at the Dart value it mirrors; the two
-     drifting apart is silent and shows up as a window that looks almost right,
-     which is why tests/unit/ab-ramp.test.ts parses both Dart files.
+     drifting apart is silent and shows up as a window that looks almost right.
+     Nothing checks this: when the app's palette changes, update these by hand.
 
      The accent is absent on purpose: the app's dark `accent`/`accentHighlight`/
      `accentMuted` are #db6f4b / #ea997f / #d2542a, byte-identical to the dark
@@ -205,7 +205,7 @@
   --color-ab-text: light-dark(#18181b, #e4e4e7);
   --color-ab-text2: light-dark(#3f3f46, #a1a1aa);
   /* `mute` and `dim` are the two ramp entries that deliberately DIVERGE from
-     the app (tests/unit/ab-ramp.test.ts pins the divergence and its floor).
+     the app (keep them off the app value when re-syncing the ones above).
      The app's textMuted #71717a and textDisabled #a1a1aa/#52525b run 2.1-4.4:1
      on these surfaces: legible in a dense native window the reader works in,
      not on a page they scan once. Both also paint ICONS, so an -ink text tier

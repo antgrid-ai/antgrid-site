@@ -10,7 +10,7 @@ security, changelog, roadmap and blog. The product lives in
 ## Build & test
     bun run build          # static output → dist/
     bun run check          # astro type/template check
-    bun run test:unit      # bun unit suites (blog policy, roadmap, palette, theme)
+    bun run test:unit      # bun unit suites (blog policy, roadmap, theme)
     bun run test:scripts   # sync-changelog script
     bun run test           # Playwright (desktop + mobile); local only, not in CI
     bun run build:og       # regenerate the OG image (preview server must be up)

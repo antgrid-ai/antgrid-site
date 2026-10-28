@@ -102,9 +102,10 @@ export const links = {
   // budget holder on the troubleshooting page; the subject line sorts them out
   // of general support mail on arrival.
   enterprise: "mailto:contact@radhaai.com?subject=Antgrid%20for%20teams",
-  // The mobile apps ship through TestFlight and Play internal testing today, so
-  // the hero has to route the ask somewhere. "Coming to the App Store" read as
-  // "you can't have it yet" while invites were in fact open — see get-started.
+  // Android is public on Google Play. iOS still ships through TestFlight, so the
+  // iPhone half has to route the ask somewhere. "Coming to the App Store" read
+  // as "you can't have it yet" while invites were in fact open — see get-started.
+  playStore: "https://play.google.com/store/apps/details?id=ai.radhaai.antgrid",
   mobileInvite: "mailto:contact@radhaai.com?subject=Antgrid%20mobile%20invite",
   privacy: "/privacy",
   terms: "/terms",
