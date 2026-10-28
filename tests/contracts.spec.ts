@@ -34,6 +34,7 @@ const OFFERED = {
 };
 
 const MOBILE_INVITE = "mailto:contact@radhaai.com?subject=Antgrid%20mobile%20invite";
+const PLAY_STORE = "https://play.google.com/store/apps/details?id=ai.radhaai.antgrid";
 
 // The web service, which is a different origin from this static build.
 const WAITLIST_ORIGIN = "https://app.antgrid.ai";
@@ -280,12 +281,16 @@ test("the download page offers every build, and Windows as a listing not a stub"
     Object.values(OFFERED).sort()
   );
 
-  // The mobile half of the product. Invites are open, so a download page that
-  // says nothing about the phone tells a reader the half it is FOR does not
-  // exist yet.
+  // The mobile half of the product. Android is on Play and iOS invites are
+  // open, so a download page that says nothing about the phone tells a reader
+  // the half it is FOR does not exist yet.
+  expect(
+    await page.locator(`a[href="${PLAY_STORE}"]`).count(),
+    "the download page stopped offering the Play Store listing"
+  ).toBeGreaterThan(0);
   expect(
     await page.locator(`a[href="${MOBILE_INVITE}"]`).count(),
-    "the download page stopped offering the mobile invite"
+    "the download page stopped offering the iOS invite"
   ).toBeGreaterThan(0);
 });
 
