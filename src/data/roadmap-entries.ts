@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-10-24";
+export const LAST_REVIEWED = "2026-10-30";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
@@ -83,6 +83,24 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     status: "now",
     update: "Building. Dictation runs on your device on Windows and Linux, and Android is being tested. It doesn't cover macOS or iOS yet.",
     updatedAt: "2026-10-05",
+  },
+  {
+    id: "cross-machine-session-messaging",
+    title: "Sessions reach each other across machines",
+    description: "A session on one machine can message a session on another, and be told it arrived, with no phone or desktop app in between.",
+    area: "Agent sessions",
+    status: "next",
+    update: "Planned. Messages travel sealed through the relay, which can't read them, and wait there while a machine is offline.",
+    updatedAt: "2026-10-30",
+  },
+  {
+    id: "orchestrator-sessions",
+    title: "One session can run the others",
+    description: "Let an orchestrating session start, prompt and stop sessions on your other machines, and collect their results.",
+    area: "Agent sessions",
+    status: "exploring",
+    update: "Under consideration, after cross-machine messaging. Each machine keeps its own say over what another session may do on it.",
+    updatedAt: "2026-10-30",
   },
   {
     id: "cross-agent-cross-machine-memory",
