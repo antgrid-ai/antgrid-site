@@ -41,7 +41,7 @@ export const NOTES: Record<string, Note> = {
     title: "Carry on in another agent",
     lines: [
       ["new", "You can now fork a session into a different agent and carry on with the same context, say when one runs out of quota mid-task. A fork into another agent works in the same workspace by default, so your uncommitted edits come along. The new agent reads the old one's transcript from a file in your project that's kept out of git."],
-      ["security", "A prompt queued while an agent started, such as a fork handoff or a message from another session, could be typed into the agent's folder-trust dialog and pick the highlighted option, which for Codex and Kimi trusts the folder. It now waits until you've answered the dialog yourself. Affected: v1.20711.1020 to v1.20746.1035, and possibly earlier releases."],
+      ["security", "A prompt queued while an agent started, such as a message from another session or a Handler reply, could be typed into the agent's folder-trust dialog and pick the highlighted option, which for Codex and Kimi trusts the folder. It now waits until you've answered the dialog yourself. Affected: v1.20711.1020 to v1.20746.1035, and possibly earlier releases."],
       ["fixed", "Refreshing a stuck connection, or cancelling one project, no longer disconnects other projects open on the same machine for good."],
       ["fixed", "The app no longer crashes when a machine reconnects while its old connection is still closing."],
       ["fixed", "A single failed read of Scheduler's storage no longer turns schedules off until you restart; they resume as soon as the storage can be read."],
@@ -65,8 +65,7 @@ export const NOTES: Record<string, Note> = {
       ["changed", "Windows: extra agent arguments are now passed as arguments. Shell operators, redirections and dynamic variables such as %CD% stay literal; ordinary environment variables still expand."],
       ["new", "Kimi and Kilo: terminal sessions can resume a conversation and fork natively. A Kimi fork into a new workspace uses a transcript handoff instead, because Kimi's native fork keeps the original workspace."],
       ["fixed", "Opening your phone's notification shade or a system dialog no longer resets a healthy connection when you return."],
-      ["fixed", "File attachments keep their destination while the file picker is open, and wait for the connection to recover before uploading."],
-      ["fixed", "A reconnect no longer loses a file you're still picking."],
+      ["fixed", "A file you attach is no longer lost if the connection drops while the file picker is open; it uploads once the connection recovers."],
       ["new", "Markdown links printed in the terminal can now open a preview of files outside the session's workspace, including plans and reports an agent saves elsewhere."],
     ],
   },
@@ -84,7 +83,6 @@ export const NOTES: Record<string, Note> = {
       ["new", "Image previews zoom with a pinch or the mouse wheel."],
       ["changed", "Long lines and wide tables show a scrollbar, so you can see there's more."],
       ["fixed", "Undelivered push notifications now expire after twelve hours, so a phone coming back after days offline doesn't receive a backlog of old agent updates."],
-      ["changed", "The sample project is clearer about when you need to connect your own computer."],
       ["new", "You can open support chat from the sample project without signing in."],
     ],
   },
@@ -183,9 +181,8 @@ export const NOTES: Record<string, Note> = {
     ],
   },
   "v1.20711.1020": {
-    lines: [
-      ["changed", "Support for each coding agent moved into a package of its own. Nothing changes about the agents we ship; it's the groundwork for adding one without touching the bridge."],
-    ],
+    // Agent support moved into its own package: nothing a user would notice.
+    lines: [],
   },
   "v1.20710.1017": {
     title: "The terminal, over a remote link",
@@ -214,7 +211,7 @@ export const NOTES: Record<string, Note> = {
   "v1.20705.1014": {
     lines: [
       ["fixed", "Opening a remote session could land you on a frozen agent terminal with nothing saying why. The pane couldn't tell “there are no terminals” from “the terminals haven't attached yet”, and some of the waits had nothing behind them that could ever end."],
-      ["fixed", "The file tree still sent too much after v1.20704.1012's fix: one remote session sent 4.6 MB in under four minutes, more than half of it tree snapshots. That's capped now."],
+      ["fixed", "The file tree no longer re-sends unchanged snapshots, which made up half of a remote session's traffic and held up your typing."],
       ["fixed", "The app reports its own stalls, rather than leaving them visible only from the other end."],
       ["fixed", "Windows: Ctrl no longer sticks down after a paste."],
       ["fixed", "Image previews open where they were opened from, and a narrow pane stops overflowing."],
@@ -223,7 +220,6 @@ export const NOTES: Record<string, Note> = {
   "v1.20705.1013": {
     lines: [
       ["fixed", "An opened folder resolves to the project that owns it, so one repository can't appear twice under two identities."],
-      ["changed", "File tree state is pulled by the app when it wants it instead of being pushed at it on every reconnect."],
     ],
   },
   "v1.20704.1012": {
@@ -237,7 +233,6 @@ export const NOTES: Record<string, Note> = {
   "v1.20702.1011": {
     lines: [
       ["new", "Downloads have a page of their own now. It also stopped handing a Windows installer to anyone reading on a phone."],
-      ["changed", "We stopped polling git for sessions nobody is watching."],
     ],
   },
   "v1.20700.1010": {
