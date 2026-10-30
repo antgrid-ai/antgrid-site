@@ -41,7 +41,7 @@ export const NOTES: Record<string, Note> = {
     title: "Carry on in another agent",
     lines: [
       ["new", "You can now fork a session into a different agent and carry on with the same context, say when one runs out of quota mid-task. A fork into another agent works in the same workspace by default, so your uncommitted edits come along. The new agent reads the old one's transcript from a file in your project that's kept out of git."],
-      ["security", "A prompt queued while an agent started, such as a fork handoff or a message from another session, could be typed into the agent's folder-trust dialog and pick the highlighted option, which for Codex and Kimi trusts the folder. It now waits until you've answered the dialog yourself. Earlier releases were affected."],
+      ["security", "A prompt queued while an agent started, such as a fork handoff or a message from another session, could be typed into the agent's folder-trust dialog and pick the highlighted option, which for Codex and Kimi trusts the folder. It now waits until you've answered the dialog yourself. Affected: v1.20711.1020 to v1.20746.1035, and possibly earlier releases."],
       ["fixed", "Refreshing a stuck connection, or cancelling one project, no longer disconnects other projects open on the same machine for good."],
       ["fixed", "The app no longer crashes when a machine reconnects while its old connection is still closing."],
       ["fixed", "A single failed read of Scheduler's storage no longer turns schedules off until you restart; they resume as soon as the storage can be read."],
@@ -60,7 +60,7 @@ export const NOTES: Record<string, Note> = {
 
   "v1.20746.1035": {
     lines: [
-      ["security", "Windows: punctuation in an opening prompt, including a scheduled one, could run as commands in the Windows command shell. Prompts are now escaped and reach the agent as text. Earlier Windows releases were affected."],
+      ["security", "Windows: punctuation in an opening prompt, including a scheduled one, could run as commands in the Windows command shell. Prompts are now escaped and reach the agent as text. Affected: Windows releases up to v1.20738.1034; we haven't pinned down when it started."],
       ["fixed", "Windows: launches keep quoted arguments, paths with spaces and opening prompts intact, sending any prompt too long for the command line after launch."],
       ["changed", "Windows: extra agent arguments are now passed as arguments. Shell operators, redirections and dynamic variables such as %CD% stay literal; ordinary environment variables still expand."],
       ["new", "Kimi and Kilo: terminal sessions can resume a conversation and fork natively. A Kimi fork into a new workspace uses a transcript handoff instead, because Kimi's native fork keeps the original workspace."],
