@@ -56,9 +56,8 @@ as a maintenance build.
 - **Leave out chores.** Refactors, dependency and build fixes, CI, tests,
   logging, docs, internal moves and wording tweaks for store review change
   nothing a user notices. A speed-up counts only if you'd feel it.
-- **One bug, one line.** When several PRs fix the same bug, write one line, in
-  the first release where the fix worked. A follow-up or cherry-pick of that
-  fix in a later release gets no line of its own.
+- **One bug, one line.** When several PRs in one release fix the same bug,
+  write one line for it.
 - **Pulled releases.** Don't delete a bad release on GitHub. Make its first line
   `Action needed:` naming the version to install instead. If one is deleted
   anyway, its note is orphaned and the unit tests fail: move anything still true
