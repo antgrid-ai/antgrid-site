@@ -184,7 +184,8 @@ const shipped = strip.reduce((n, day) => n + day.releases.length, 0);
               ))}
             </ul>
           ) : entry.maintenance ? (
-            // The release said this itself. Stated plainly rather than hidden,
+            // The release said this itself, or its note did by having no lines.
+            // Stated plainly rather than hidden,
             // because a missing version is a question ("did I miss one?") and
             // this answers it in a line.
             <p class="mt-5 max-w-lg text-note text-muted2">

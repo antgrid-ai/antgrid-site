@@ -10,6 +10,8 @@
 //   2. A release the tooling marked `maintenance` says so in one line. These
 //      are builds where the release itself declared no user-facing change, so
 //      writing prose for one would be inventing a change that did not happen.
+//      A note with no lines says the same of a build whose changes were all
+//      chores, and renders the same way.
 //   3. Anything else renders as version, date and a link to the full generated
 //      notes. Deliberately NOT a "no notes yet" placeholder: a page that ships
 //      its own TODOs reads as abandoned, and the link is a real answer rather
@@ -72,7 +74,10 @@ export type Note = {
    *
    *  The order is editorial and the page renders it as written: the line a
    *  release leads with is the one someone judged worth leading with. Sorting
-   *  these into kind order would put "And this page." above Modelwatch. */
+   *  these into kind order would put "And this page." above Modelwatch.
+   *
+   *  Empty when nothing in the release is worth a reader's time: the build then
+   *  reads as maintenance rather than as one nobody has written up. */
   lines: Change[];
 };
 
@@ -80,10 +85,10 @@ export type Note = {
 export type Entry = Release & { note?: Note };
 
 /** Newest first, as sync-changelog.mjs sorted them. */
-export const ENTRIES: Entry[] = RELEASES.map((release) => ({
-  ...release,
-  note: NOTES[release.version],
-}));
+export const ENTRIES: Entry[] = RELEASES.map((release) => {
+  const note = NOTES[release.version];
+  return note?.lines.length === 0 ? { ...release, maintenance: true } : { ...release, note };
+});
 
 /**
  * Note keys matching no published release. Always empty in a healthy tree: a
