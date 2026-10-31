@@ -21,6 +21,25 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20756.1038": {
+    lines: [
+      ["changed", "Notifications are titled with the session's name, even for the session you were in, and the body starts with a symbol for the kind: ✅ done, 🔐 permission, ❓ question, ⏸️ idle, ⚠️ error."],
+      ["fixed", "Codex: a message queued while Codex starts is held behind its update prompt and hooks-review screen, so it can't pick “Update now” and close the terminal."],
+      ["fixed", "Files with no preview, such as binaries, now show a Download button instead of an error."],
+      ["fixed", "Search in files returned nothing outside a git repository when ripgrep wasn't installed, and hid errors such as an invalid regex. Both now work or say why."],
+      ["fixed", "Closing a terminal tab now removes it for good, instead of it coming back on every launch. The host needs this release too."],
+      ["fixed", "The New Session agent menu listed every agent while it was still checking which are installed. It now says it's checking."],
+      ["fixed", "Sessions on your other machines took a minute or more to appear in the session list. They show up sooner."],
+      ["fixed", "Fork and Handler could miss a Codex session's recent messages when its transcript was full of large tool output, such as images. They now read everything since the last compaction."],
+      ["fixed", "Codex: sessions compacted by Codex 0.146 to 0.156 showed an empty transcript. Your own messages show again."],
+      ["fixed", "Kilo: forks now carry the session's board."],
+      ["fixed", "Claude Code: a session isn't named after a background-task notification any more."],
+      ["fixed", "Copilot: stopping a session now asks it to exit with two Ctrl-C presses, instead of waiting out the grace period and force-killing it."],
+      ["fixed", "macOS: the host RAM chip showed a Mac as nearly full. It now reports used memory the way Activity Monitor does."],
+      ["fixed", "macOS: a project reached through a symlink returned files from its isolated worktrees when you searched in files."],
+    ],
+  },
+
   "v1.20752.1037": {
     lines: [
       ["changed", "The Git panel lists Staged Changes and Changes as separate groups in one scroll, conflicts first, each with its own Unstage All or Discard All. Discarding a file under Changes leaves its staged edits alone. A refused commit keeps your message, and a commit can't start during a pull, push or publish."],
