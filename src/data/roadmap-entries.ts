@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-10-24";
+export const LAST_REVIEWED = "2026-10-31";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
@@ -85,13 +85,22 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     updatedAt: "2026-10-05",
   },
   {
+    id: "cross-agent-memory",
+    title: "Memory",
+    description: "Let every agent on your machine remember what earlier sessions in the same project learned, whichever agent learned it.",
+    area: "Project context",
+    status: "now",
+    update: "Building. The agents on one machine share a memory for each project, and you can search, correct and forget what's in it from the app. It's off until you turn it on, and chat sessions don't use it yet.",
+    updatedAt: "2026-10-31",
+  },
+  {
     id: "cross-agent-cross-machine-memory",
-    title: "Cross-agent and cross-machine memory",
-    description: "Carry useful project context across agents and machines so future sessions can build on earlier work.",
+    title: "Memory across your machines",
+    description: "Carry a project's memory to your other machines, so sessions there can build on earlier work too.",
     area: "Project context",
     status: "next",
-    update: "Planned. Work hasn't started yet.",
-    updatedAt: "2026-10-05",
+    update: "Planned. Memory stays on the machine that saved it until this is built.",
+    updatedAt: "2026-10-31",
   },
   {
     id: "native-app-preview",
