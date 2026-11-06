@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-10-31";
+export const LAST_REVIEWED = "2026-11-06";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
