@@ -59,9 +59,10 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     title: "Memory",
     description: "Let every agent on your machine remember what earlier sessions in the same project learned, whichever agent learned it.",
     area: "Project context",
-    status: "now",
-    update: "Building. The agents on one machine share a memory for each project, and you can search, correct and forget what's in it from the app. It's off until you turn it on, and chat sessions don't use it yet.",
+    status: "done",
+    update: "Completed: the agents on one machine share a memory for each project, and you can search, edit and forget what's in it from the Memory screen. It's off until you turn it on and works in Claude Code, Codex, OpenCode, Cursor, Copilot and Kilo terminal sessions, not chat.",
     updatedAt: "2026-11-06",
+    releaseUrl: "https://antgrid.ai/changelog#v1.20763.1039",
   },
   {
     id: "cross-agent-cross-machine-memory",
