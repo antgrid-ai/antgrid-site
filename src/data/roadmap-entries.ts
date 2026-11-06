@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-10-24";
+export const LAST_REVIEWED = "2026-10-31";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
@@ -16,36 +16,6 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     update: "Completed: you can fork a session into any installed agent. The new session gets the original's full transcript and a short task summary in its own workspace, kept out of git.",
     updatedAt: "2026-10-24",
     releaseUrl: "https://antgrid.ai/changelog#v1.20750.1036",
-  },
-  {
-    id: "agent-scheduling",
-    title: "Agents can schedule work",
-    description: "Ask the agent you are working with to set up a schedule instead of creating it by hand.",
-    area: "Agent sessions",
-    status: "done",
-    update: "Completed: the agent you're working with can list, create, change, pause, delete and run schedules for its project, never with more approval freedom than its own session. Sessions a schedule started can only read schedules.",
-    updatedAt: "2026-10-12",
-    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
-  },
-  {
-    id: "one-off-schedules",
-    title: "One-off schedules",
-    description: "Run a prompt once at a chosen time, such as tomorrow at 9.",
-    area: "Agent sessions",
-    status: "done",
-    update: "Completed: choose Once in the schedule editor, or ask an agent. A one-off missed while your desktop was closed runs when it's back, and its history shows how it ended.",
-    updatedAt: "2026-10-12",
-    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
-  },
-  {
-    id: "scheduler-catch-up",
-    title: "Scheduler catch-up",
-    description: "Run the latest missed occurrence when your desktop comes back, instead of silently skipping it.",
-    area: "Agent sessions",
-    status: "done",
-    update: "Completed: each schedule can run the latest missed occurrence or skip missed runs, with one record for any earlier misses. Schedules keep running after a phone signs out.",
-    updatedAt: "2026-10-12",
-    releaseUrl: "https://antgrid.ai/changelog#v1.20738.1034",
   },
   {
     id: "scheduler",
@@ -80,18 +50,27 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     title: "Voice input",
     description: "Dictate instructions to agents.",
     area: "Agent input",
-    status: "now",
+    status: "Planned",
     update: "Building. Dictation runs on your device on Windows and Linux, and Android is being tested. It doesn't cover macOS or iOS yet.",
     updatedAt: "2026-10-05",
   },
   {
+    id: "cross-agent-memory",
+    title: "Memory",
+    description: "Let every agent on your machine remember what earlier sessions in the same project learned, whichever agent learned it.",
+    area: "Project context",
+    status: "now",
+    update: "Building. The agents on one machine share a memory for each project, and you can search, correct and forget what's in it from the app. It's off until you turn it on, and chat sessions don't use it yet.",
+    updatedAt: "2026-11-06",
+  },
+  {
     id: "cross-agent-cross-machine-memory",
-    title: "Cross-agent and cross-machine memory",
-    description: "Carry useful project context across agents and machines so future sessions can build on earlier work.",
+    title: "Memory across your machines",
+    description: "Carry a project's memory to your other machines, so sessions there can build on earlier work too.",
     area: "Project context",
     status: "next",
-    update: "Planned. Work hasn't started yet.",
-    updatedAt: "2026-10-05",
+    update: "Planned. Memory stays on the machine that saved it until this is built.",
+    updatedAt: "2026-10-31",
   },
   {
     id: "native-app-preview",
