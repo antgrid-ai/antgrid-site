@@ -21,6 +21,30 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20763.1039": {
+    title: "Memory",
+    lines: [
+      ["changed", "Action needed: OpenCode: Antgrid now needs OpenCode 2 or later, in terminal and chat sessions. Run “opencode upgrade”: with an older install, an OpenCode session won't start and the error says why."],
+      ["changed", "Action needed: update Antgrid on every machine whose sessions message each other. This release can't exchange session messages with earlier ones, and updating clears past session messages once."],
+      ["new", "Your agents can share a memory for each project on a machine, so a fix Codex worked out yesterday is there for Claude Code today. Turn it on from the Memory screen, where you can search, edit and forget what's saved; it stays on that machine. It works in Claude Code, Codex, OpenCode, Cursor, Copilot and Kilo terminal sessions, not chat, and a session already running needs a restart, which the screen offers."],
+      ["new", "Agents can now start, prompt and stop sessions on your other machines, not only message them. It's on by default: turn off “Orchestrator: may drive other machines” under Remote access on the machine that asks, or “Reachable by agents” on the one it asks. A session started this way can't skip approvals."],
+      ["changed", "Messages between sessions on different machines now travel through our relay, sealed so only the receiving machine can read them, instead of relying on the Antgrid app to carry them. A message sent while the other machine is off waits until it's back, and each one shows whether it's held, relayed, delivered or refused."],
+      ["changed", "Claude Code, Codex and OpenCode chat sessions now load your own settings and MCP servers, and get Antgrid's tools, as terminal sessions do. Claude Code chat also keeps an ANTHROPIC_API_KEY set in your environment, which it used to remove."],
+      ["changed", "The New Session page's Recent list now groups by project, and the same project on two machines is one group. The Machine and Status chips still switch it."],
+      ["new", "Hover over the host chip in the title bar to see the host's CPU use alongside its memory."],
+      ["new", "On desktop, hover over a row in the file tree to see its full path."],
+      ["fixed", "Claude Code: a session closed before you sent anything couldn't be reopened. It now starts a fresh conversation instead."],
+      ["fixed", "If signing out couldn't finish, the app crashed. It now asks you to restart Antgrid and try again."],
+      ["fixed", "The app could crash when a connection to one of your machines timed out in the background. It no longer does."],
+      ["fixed", "Codex: in chat, rate limits, session budget limits and dropped connections showed as unknown errors. They now say what happened."],
+      ["fixed", "OpenCode: sessions signed in with ChatGPT were never named. OpenCode and Kilo now name sessions with the model each uses for its own titles."],
+      ["fixed", "Claude Code: a reopened chat showed compaction summaries, task notifications and ! shell commands as your messages. It no longer does."],
+      ["fixed", "iPhone: notifications from a machine weren't set up if it connected while your phone was locked. Antgrid now retries when you return to the app."],
+      ["fixed", "Kimi: forking a session migrated from the older kimi-cli carried only your prompts. Forks now include its replies and tool calls."],
+      ["fixed", "The preview's element picker now turns off when it can't start, instead of showing as on while doing nothing."],
+    ],
+  },
+
   "v1.20756.1038": {
     lines: [
       ["changed", "Notifications are titled with the session's name, even for the session you were in, and the body starts with a symbol for the kind: ✅ done, 🔐 permission, ❓ question, ⏸️ idle, ⚠️ error."],
