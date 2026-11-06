@@ -50,8 +50,8 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     title: "Voice input",
     description: "Dictate instructions to agents.",
     area: "Agent input",
-    status: "Planned",
-    update: "Building. Dictation runs on your device on Windows and Linux, and Android is being tested. It doesn't cover macOS or iOS yet.",
+    status: "next",
+    update: "Planned. On-device dictation is built for Windows and Linux and was being tested on Android; work on the rest resumes later. It doesn't cover macOS or iOS yet.",
     updatedAt: "2026-10-05",
   },
   {
