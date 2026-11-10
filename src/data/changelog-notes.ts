@@ -21,6 +21,22 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20766.1040": {
+    lines: [
+      ["new", "Memory now works in Claude Code, Codex and OpenCode chat sessions, as it does in terminal sessions. A chat session already running needs a restart, which the Memory screen offers."],
+      ["changed", "A new install now follows your system's light or dark mode. Existing installs keep their theme: turn on “Follow system light/dark” in App Settings to switch."],
+      ["changed", "Memory now opens beside the sidebar, as Scheduler does, instead of over the whole window."],
+      ["fixed", "OpenCode 2: since v1.20763.1039, naming a session could leave OpenCode's background service keeping sessions only in memory, where they were lost. It no longer does."],
+      ["fixed", "OpenCode: on a 1.x install, Antgrid's update and its error message now use “opencode upgrade --major”, since a plain “opencode upgrade” stays on 1.x."],
+      ["fixed", "Deleting a session from the sidebar's ⋯ menu did nothing when refused, as with uncommitted changes. It now offers Force delete or says why."],
+      ["fixed", "On your phone, a file attached to a terminal lost its progress after the picker closed, and its path often wasn't typed. Both work now."],
+      ["fixed", "Copilot: forking a long session carried only its terminal scrollback once Copilot 1.0.106 or later had split its log. It now carries the full transcript."],
+      ["fixed", "OpenCode 2: in chat, sign-in errors and cancelled runs showed as unknown errors. They now say what happened."],
+      ["fixed", "With “Follow system light/dark” on, picking a theme it wouldn't show did nothing visible. Picking one now turns following off so your choice shows."],
+      ["fixed", "When an agent read a session-message thread, the messages it had sent looked like ones it received. Each now shows sender and recipient."],
+    ],
+  },
+
   "v1.20763.1039": {
     title: "Memory",
     lines: [
