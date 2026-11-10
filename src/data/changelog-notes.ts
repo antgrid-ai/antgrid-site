@@ -26,7 +26,7 @@ export const NOTES: Record<string, Note> = {
       ["new", "Memory now works in Claude Code, Codex and OpenCode chat sessions, as it does in terminal sessions. A chat session already running needs a restart, which the Memory screen offers."],
       ["changed", "A new install now follows your system's light or dark mode. Existing installs keep their theme: turn on “Follow system light/dark” in App Settings to switch."],
       ["changed", "Memory now opens beside the sidebar, as Scheduler does, instead of over the whole window."],
-      ["fixed", "OpenCode 2: since v1.20763.1039, naming a session could leave OpenCode's background service keeping sessions only in memory, where they were lost. It no longer does."],
+      ["fixed", "OpenCode 2: since v1.20763.1039, naming a session could leave OpenCode's background service keeping sessions only in memory, so they could be lost. That's fixed."],
       ["fixed", "OpenCode: on a 1.x install, Antgrid's update and its error message now use “opencode upgrade --major”, since a plain “opencode upgrade” stays on 1.x."],
       ["fixed", "Deleting a session from the sidebar's ⋯ menu did nothing when refused, as with uncommitted changes. It now offers Force delete or says why."],
       ["fixed", "On your phone, a file attached to a terminal lost its progress after the picker closed, and its path often wasn't typed. Both work now."],
