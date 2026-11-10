@@ -4,7 +4,7 @@
 import type { RoadmapEntry } from "./roadmap";
 
 // Review dates record an editorial check, never a build timestamp.
-export const LAST_REVIEWED = "2026-11-06";
+export const LAST_REVIEWED = "2026-11-10";
 
 export const ROADMAP: readonly RoadmapEntry[] = [
   {
@@ -63,6 +63,15 @@ export const ROADMAP: readonly RoadmapEntry[] = [
     update: "Completed: the agents on one machine share a memory for each project, and you can search, edit and forget what's in it from the Memory screen. It's off until you turn it on and works in Claude Code, Codex, OpenCode, Cursor, Copilot and Kilo terminal sessions, not chat.",
     updatedAt: "2026-11-06",
     releaseUrl: "https://antgrid.ai/changelog#v1.20763.1039",
+  },
+  {
+    id: "memory-details",
+    title: "Memory details",
+    description: "Make saved findings easier to scan and keep more detail in each memory.",
+    area: "Project context",
+    status: "now",
+    update: "Testing. Optional titles and descriptions and up to 16 KiB of text per memory are built; release checks are still in progress.",
+    updatedAt: "2026-11-10",
   },
   {
     id: "cross-agent-cross-machine-memory",
