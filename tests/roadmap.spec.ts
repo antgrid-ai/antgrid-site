@@ -28,7 +28,7 @@ test("roadmap renders planned work, stable anchors and completed features", asyn
     if (entry.discussionUrl) await expect(article.getByRole("link", { name: `Discussion: ${entry.title}` })).toHaveAttribute("href", entry.discussionUrl);
   }
   await expect(page.locator("main")).not.toContainText("Awaiting release");
-  await expect(page.getByRole("region", { name: "Next", exact: true })).toContainText("Cross-agent and cross-machine memory");
+  await expect(page.getByRole("region", { name: "Next", exact: true })).toContainText("Memory across your machines");
   await expect(page.locator('main a[href="/changelog"]')).toBeVisible();
   const anchor = page.getByRole("link", { name: "Native app preview", exact: true });
   await anchor.focus();
