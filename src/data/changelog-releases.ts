@@ -6,6 +6,12 @@ import type { Release } from "./changelog";
 
 export const RELEASES: Release[] = [
   {
+    "version": "v1.20766.1040",
+    "date": "2026-11-09",
+    "url": "https://github.com/antgrid-ai/antgrid/releases/tag/v1.20766.1040",
+    "maintenance": false
+  },
+  {
     "version": "v1.20763.1039",
     "date": "2026-11-06",
     "url": "https://github.com/antgrid-ai/antgrid/releases/tag/v1.20763.1039",
