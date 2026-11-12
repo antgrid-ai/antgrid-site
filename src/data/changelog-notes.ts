@@ -21,6 +21,17 @@ import type { Note } from "./changelog";
  * anywhere.
  */
 export const NOTES: Record<string, Note> = {
+  "v1.20768.1041": {
+    lines: [
+      ["new", "You can now open Memory on your phone, and manage any of your machines' Memory from any device, as you already could with Scheduler: pick the machine in the Memory screen's header. That machine has to be online with remote access on, and its memory still stays on it."],
+      ["new", "Memories can now have a title and a short description, which show in the Memory screen and which agents are asked to fill in when they save. You can add or change them when you edit a memory. A memory's text can now be up to 16 KiB, up from 4 KiB."],
+      ["fixed", "Claude Code: with Memory on, sessions often saved nothing because nothing told them Memory was on. Each session is now told when it starts and after compaction."],
+      ["fixed", "Scheduler could wait up to 90 seconds before saying a machine was offline. It now says so after 20 seconds."],
+      ["fixed", "With agents working, status animations redrew every frame and the host resent unchanged terminal screens. Animations now redraw ten times a second, and unchanged screens aren't resent."],
+      ["new", "The sample project now has example memories, so you can try the Memory screen before connecting a machine. Changes there reset each time you open it."],
+    ],
+  },
+
   "v1.20766.1040": {
     lines: [
       ["new", "Memory now works in Claude Code, Codex and OpenCode chat sessions, as it does in terminal sessions. A chat session already running needs a restart, which the Memory screen offers."],
